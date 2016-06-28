@@ -70,8 +70,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     if (letterCounter >= 3) {
+                        for (String previousWord : userWords) {
+                            if (userWord.equals(previousWord)) {
+                                Toast.makeText(MainActivity.this, "Word Already Submitted", Toast.LENGTH_LONG).show();
+                            }
+                        }
                         userWords.add(userWord);
-                        Toast.makeText(MainActivity.this, "User words: "+userWords.toStriWng(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "User words: "+userWords.toString(), Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(MainActivity.this, "Unacceptable!", Toast.LENGTH_LONG).show();
                     }
