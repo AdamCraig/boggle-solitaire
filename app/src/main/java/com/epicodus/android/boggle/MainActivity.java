@@ -70,19 +70,24 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     if (letterCounter >= 3) {
+                        boolean alreadySubmitted = false;
                         for (String previousWord : userWords) {
                             if (userWord.equals(previousWord)) {
                                 Toast.makeText(MainActivity.this, "Word Already Submitted", Toast.LENGTH_LONG).show();
+                                alreadySubmitted = true;
                             }
                         }
-                        userWords.add(userWord);
-                        Toast.makeText(MainActivity.this, "User words: "+userWords.toString(), Toast.LENGTH_LONG).show();
+                        if (!alreadySubmitted) {
+                            userWords.add(userWord);
+                            Toast.makeText(MainActivity.this, "User words: "+userWords.toString(), Toast.LENGTH_LONG).show();
+                        }
+
                     } else {
-                        Toast.makeText(MainActivity.this, "Unacceptable!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "No Matches. Try Again!", Toast.LENGTH_LONG).show();
                     }
 
                 } else {
-                   Toast.makeText(MainActivity.this, "Invalid entry length", Toast.LENGTH_LONG).show();
+                   Toast.makeText(MainActivity.this, "Invalid Entry Length", Toast.LENGTH_LONG).show();
                 }
             }
         });
