@@ -1,5 +1,6 @@
 package com.epicodus.android.boggle;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.randomStringTextView) TextView mRandomStringTextView;
     @Bind(R.id.submitButton) Button mSubmitButton;
     @Bind(R.id.userEditText) EditText mUserEditText;
+    @Bind(R.id.submitScoreButton) Button mSubmitScoreButton;
 
     public char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
     public char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
@@ -90,6 +92,17 @@ public class MainActivity extends AppCompatActivity {
                    Toast.makeText(MainActivity.this, "Invalid Entry Length", Toast.LENGTH_LONG).show();
                 }
             }
+            });
+
+                mSubmitScoreButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
+                        intent.putExtra("userWords", userWords);
+                        startActivity(intent);
+                    }
         });
     }
 
